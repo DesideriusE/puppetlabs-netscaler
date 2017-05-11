@@ -67,7 +67,7 @@ Puppet::Type.type(:netscaler_server).provide(:rest, {:parent => Puppet::Provider
 
     # Detect if the address is an IP or a domain name
     if ! self.class.is_ip_address(message[:address])
-      message[:domain] = message[:address]
+      message[:domain] = message[:address] if @create_elements
       message.delete(:address)
     end
 
